@@ -127,6 +127,26 @@ class AuthenticationsController {
         });
     }
   }
+
+  static async logout(req, res) {
+    const { refreshToken } = req.cookies;
+    if (!refreshToken) {
+      return res.sendStatus(204);
+    }
+    const response = await findAllUser(refreshToken);
+    if (!response) {
+      return res.sendStatus(204);
+    }
+    const { id } = response[0];
+    await updateRefreshToken(id, null);
+    res.clearCookie('refreshToken');
+    // return res.send(res.sendStatus(200));
+    res.status(200)
+      .send({
+        status: 'success',
+        message: 'Berhasil melakukan logout!',
+      });
+  }
 }
 
 module.exports = AuthenticationsController;

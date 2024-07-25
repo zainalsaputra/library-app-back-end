@@ -54,8 +54,12 @@ Content-Type: application/json
 ###
 
 GET  http://localhost:5000/auth/register
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjE5MjU1NTQsImV4cCI6MTcyMTkyNTU3NH0.jy45tYzqV56uPlGdIuzRymwUGfy--WDulDP3g9d4OaM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMjYzNTRlLWM0MTEtNGZmNC1hNzc4LWVjOGIyNjllZmMyNiIsIm5hbWUiOiJaYWluYWwgU2FwdXRyYSIsImVtYWlsIjoiemFpbmFsc0BibnNwLmluIiwiaWF0IjoxNzIxOTI3NDgzLCJleHAiOjE3MjE5Mjc1MDN9.TnLd967FC0wCh-DgV6wD31NemL095C81hP-IO5k8XwM
 
 ###
 
 GET  http://localhost:5000/auth/token
+
+###
+
+DELETE   http://localhost:5000/auth/logout

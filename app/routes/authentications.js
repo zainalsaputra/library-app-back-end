@@ -13,4 +13,6 @@ route.get('/token', AuthenticationsController.refreshToken);
 
 route.post('/login', AuthenticationsController.login);
 
+route.delete('/logout', AuthenticationsController.logout);
+
 module.exports = route;
