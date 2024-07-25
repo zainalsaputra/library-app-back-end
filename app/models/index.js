@@ -2,12 +2,12 @@ const { Sequelize } = require('sequelize');
 
 const { DataTypes } = Sequelize;
 // const Schemas = require('./schema');
-const sipenjaruDB = require('../config');
+const libraryDB = require('../config');
 
-// const Models = new Schemas(sipenjaruDB, DataTypes, Sequelize);
+// const Models = new Schemas(libraryDB, DataTypes, Sequelize);
 
 class Schemas {
-  static roles = sipenjaruDB.define('roles', {
+  static roles = libraryDB.define('roles', {
     id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -21,7 +21,7 @@ class Schemas {
     },
   });
 
-  static users = sipenjaruDB.define('users', {
+  static users = libraryDB.define('users', {
     id: {
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
@@ -64,13 +64,86 @@ class Schemas {
 
     },
   });
+
+  static books = libraryDB.define('books', {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
+      unique: false,
+      allowNull: false,
+    },
+    author: {
+      type: DataTypes.STRING,
+      unique: false,
+      allowNull: true,
+    },
+    description: {
+      type: DataTypes.STRING,
+      unique: false,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      unique: false,
+      allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: '1',
+    },
+    // userId: {
+    //   type: DataTypes.UUID,
+    //   allowNull: true,
+    // },
+  });
+
+  static rentalLogs = libraryDB.define('rentalLogs', {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
+    },
+    rentalDate: {
+      type: DataTypes.DATE,
+      unique: false,
+      allowNull: false,
+    },
+    returnDate: {
+      type: DataTypes.DATE,
+      unique: false,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+    bookId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+  });
 }
 
 Schemas.roles.hasMany(Schemas.users);
 Schemas.users.belongsTo(Schemas.roles);
+// Schemas.books.belongsTo(Schemas.users);
+Schemas.users.belongsToMany(Schemas.books, { through: 'rentalLogs' });
+Schemas.books.belongsToMany(Schemas.users, { through: 'rentalLogs' });
 
 (async () => {
-  sipenjaruDB.sync();
+  libraryDB.sync();
   setTimeout(() => {
     Schemas.roles.findOrCreate({
       where: {
