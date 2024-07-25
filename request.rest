@@ -1,0 +1,61 @@
+GET http://localhost:5000/zainals
+
+###
+
+GET http://localhost:5000/auth
+
+###
+
+POST  http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "name" : "Informatika 2023",
+    "address" : "Malang City",
+    "email" : "informatika23@gmail.com",
+    "phone" : "62812",
+    "password" : "Infokom23"
+}
+
+###
+
+POST  http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "name" : "Zainal Saputra",
+    "address" : "Surabaya",
+    "email" : "zainals@bnsp.in",
+    "phone" : "62811",
+    "password" : "Bnsp11",
+    "role": "admin"
+}
+
+###
+
+POST  http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "informatika23@gmail.com",
+    "password" : "Infokom23"
+}
+
+###
+
+POST  http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "zainals@bnsp.in",
+    "password" : "Bnsp11"
+}
+
+###
+
+GET  http://localhost:5000/auth/register
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MjE5MjU1NTQsImV4cCI6MTcyMTkyNTU3NH0.jy45tYzqV56uPlGdIuzRymwUGfy--WDulDP3g9d4OaM
+
+###
+
+GET  http://localhost:5000/auth/token

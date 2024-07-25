@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Lumajang87",
+    "database": "library_db",
+    "host": "localhost",
+    "port": "5000",
+    "dialect": "mysql"
+  }
+}
