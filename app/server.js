@@ -8,13 +8,13 @@ const app = express();
 
 const router = express.Router();
 
-router.get('/:user', (req, res) => {
-  const { user } = req.params;
-  res.send({
-    status: 'success',
-    data: `Welcome to landing page ${user}`,
-  });
-});
+// router.get('/:user', (req, res) => {
+//   const { user } = req.params;
+//   res.send({
+//     status: 'success',
+//     data: `Welcome to landing page ${user}`,
+//   });
+// });
 
 // app.use(cors());
 app.use(cors({ credentials: true, origin: 'http://localhost:5000' }));
