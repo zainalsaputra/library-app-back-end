@@ -1,3 +1,6 @@
+/* eslint-disable consistent-return */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable object-shorthand */
 const multer = require('multer');
 const path = require('path');
 

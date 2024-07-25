@@ -63,6 +63,10 @@ class Schemas {
       allowNull: true,
 
     },
+    // bookId: {
+    //   type: DataTypes.UUID,
+    //   allowNull: true,
+    // },
   });
 
   static books = libraryDB.define('books', {
@@ -113,12 +117,14 @@ class Schemas {
     rentalDate: {
       type: DataTypes.DATE,
       unique: false,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: DataTypes.NOW,
     },
     returnDate: {
       type: DataTypes.DATE,
       unique: false,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: DataTypes.NOW,
     },
     status: {
       type: DataTypes.BOOLEAN,
@@ -127,7 +133,7 @@ class Schemas {
     },
     userId: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
     },
     bookId: {
       type: DataTypes.UUID,
