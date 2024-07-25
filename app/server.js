@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,8 @@ router.get('/:user', (req, res) => {
   });
 });
 
+// app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:5000' }));
 app.use(cookieParser());
 app.use(express.json());
 
