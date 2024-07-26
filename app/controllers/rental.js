@@ -7,6 +7,7 @@ const {
   createRental,
   findAllRentalLogs,
   returnBookUpdate,
+  findSpecifiedRentalLogs,
 } = require('../services/rental');
 
 class rentalController {
@@ -41,6 +42,27 @@ class rentalController {
         return res.status(400).json({ errors: errors.array() });
       }
       const response = await findAllRentalLogs();
+      res.status(200)
+        .send({
+          status: 'success',
+          data: response,
+        });
+    } catch (error) {
+      res.status(500)
+        .send({
+          status: 'error',
+          message: error.message,
+        });
+    }
+  }
+
+  static async getSpecifiedRentalLogs(req, res) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      const response = await findSpecifiedRentalLogs();
       res.status(200)
         .send({
           status: 'success',

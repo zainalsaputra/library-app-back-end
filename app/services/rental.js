@@ -30,6 +30,39 @@ const findAllRentalLogs = async () => {
   return result;
 };
 
+const findSpecifiedRentalLogs = async () => {
+  const result = await Schemas.rentalLogs.findAll({
+    where: {
+      status: true,
+    },
+    order: [
+      ['rentalDate', 'DESC'],
+    ],
+    include: [
+      {
+        model: Schemas.books,
+        attributes: ['title', 'author', 'image'],
+      },
+    ],
+  });
+  return result;
+};
+
+// const findAllRentalLogs = async () => {
+//   const result = await Schemas.rentalLogs.findAll({
+//     order: [
+//       ['rentalDate', 'DESC'],
+//     ],
+//     include: [
+//       {
+//         model: Schemas.books,
+//         attributes: ['title', 'author', 'image'],
+//       },
+//     ],
+//   });
+//   return result;
+// };
+
 const returnBookUpdate = async (_id) => {
   const result = await Schemas.rentalLogs.update({
     returnDate: new Date(),
@@ -46,4 +79,5 @@ module.exports = {
   createRental,
   findAllRentalLogs,
   returnBookUpdate,
+  findSpecifiedRentalLogs,
 };

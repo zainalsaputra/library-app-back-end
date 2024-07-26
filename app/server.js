@@ -1,12 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
-
-const router = express.Router();
 
 // router.get('/:user', (req, res) => {
 //   const { user } = req.params;
@@ -16,10 +14,25 @@ const router = express.Router();
 //   });
 // });
 
-// app.use(cors());
-app.use(cors({ credentials: true, origin: ['http://localhost:5000', 'http://localhost:8080'] }));
+const corsOptions = {
+  origin: ['http://localhost:5000', 'http://localhost:8080'],
+  methods: '*',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
+
+const router = express.Router();
 
 app.use(router);
 

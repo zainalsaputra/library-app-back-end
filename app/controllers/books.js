@@ -10,10 +10,10 @@ const {
 class BooksController {
   static async addedBook(req, res) {
     try {
-      // const errors = validationResult(req);
-      // if (!errors.isEmpty()) {
-      //   return res.status(400).json({ errors: errors.array() });
-      // }
+      const errors = validationResult(req.body);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
       // const normalizedPath = path.normalize(req.file.path);
       // console.log(normalizedPath);
       // const image = path.normalize(req.file.path);

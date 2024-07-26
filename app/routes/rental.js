@@ -7,8 +7,10 @@ const route = express.Router();
 
 route.post('/rental/:bookId', RentalController.addedRental);
 
-route.get('/rental', RentalController.getRentalLogs);
+route.get('/rental/logs', RentalController.getRentalLogs);
 
-route.put('/rental/:id', RentalController.returnRental);
+route.get('/rental', RentalController.getSpecifiedRentalLogs);
+
+route.put('/return/:id', RentalController.returnRental);
 
 module.exports = route;
