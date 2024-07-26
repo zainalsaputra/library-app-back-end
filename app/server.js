@@ -17,7 +17,7 @@ const router = express.Router();
 // });
 
 // app.use(cors());
-app.use(cors({ credentials: true, origin: 'http://localhost:5000' }));
+app.use(cors({ credentials: true, origin: ['http://localhost:5000', 'http://localhost:8080'] }));
 app.use(cookieParser());
 app.use(express.json());
 

@@ -3,8 +3,6 @@
 /* eslint-disable prefer-const */
 const { body } = require('express-validator');
 const Schemas = require('../models');
-const { refresh } = require('../../draft/generate');
-const { refreshToken } = require('../controllers/authentications');
 
 const createUser = async (body) => {
   // let roleFilter = body.level;

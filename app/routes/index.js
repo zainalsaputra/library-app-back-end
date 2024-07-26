@@ -11,7 +11,9 @@ const rental = require('./rental');
 app.use('/auth', authentication);
 app.use('/books', books);
 app.use('/books', rental);
+
 app.use('/tmp', express.static(path.join(__dirname, '../../tmp')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/tmp/:filename', (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(__dirname, '../../tmp', filename);
