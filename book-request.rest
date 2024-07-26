@@ -6,7 +6,7 @@ GET http://localhost:5000/books
 
 ###
 
-GET http://localhost:5000/tmp/image-1721952114604.png
+GET http://localhost:5000/tmp/image-1721952500824.png
 
 ###
 

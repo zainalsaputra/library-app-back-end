@@ -9,4 +9,6 @@ route.post('/rental/:bookId', RentalController.addedRental);
 
 route.get('/rental', RentalController.getRentalLogs);
 
+route.put('/rental/:id', RentalController.returnRental);
+
 module.exports = route;

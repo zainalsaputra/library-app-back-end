@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator');
 const {
   createRental,
   findAllRentalLogs,
+  returnBookUpdate,
 } = require('../services/rental');
 
 class rentalController {
@@ -20,7 +21,7 @@ class rentalController {
       res.status(201)
         .send({
           status: 'success',
-          message: 'Rental book successfully!!',
+          message: 'The book was successfully rented!',
           data: response,
         });
     } catch (error) {
@@ -43,6 +44,29 @@ class rentalController {
       res.status(200)
         .send({
           status: 'success',
+          data: response,
+        });
+    } catch (error) {
+      res.status(500)
+        .send({
+          status: 'error',
+          message: error.message,
+        });
+    }
+  }
+
+  static async returnRental(req, res) {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      const _id = req.params.id;
+      const response = await returnBookUpdate(_id);
+      res.status(200)
+        .send({
+          status: 'success',
+          message: 'The book has been returned!',
           data: response,
         });
     } catch (error) {
