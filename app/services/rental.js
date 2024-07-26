@@ -16,7 +16,17 @@ const createRental = async (_bookId) => {
 };
 
 const findAllRentalLogs = async () => {
-  const result = await Schemas.rentalLogs.findAll();
+  const result = await Schemas.rentalLogs.findAll({
+    order: [
+      ['rentalDate', 'DESC'],
+    ],
+    include: [
+      {
+        model: Schemas.books,
+        attributes: ['title', 'author', 'image'],
+      },
+    ],
+  });
   return result;
 };
 

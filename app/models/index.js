@@ -131,10 +131,10 @@ class Schemas {
       allowNull: false,
       defaultValue: true,
     },
-    userId: {
-      type: DataTypes.UUID,
-      allowNull: true,
-    },
+    // userId: {
+    //   type: DataTypes.UUID,
+    //   allowNull: true,
+    // },
     bookId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -145,8 +145,11 @@ class Schemas {
 Schemas.roles.hasMany(Schemas.users);
 Schemas.users.belongsTo(Schemas.roles);
 // Schemas.books.belongsTo(Schemas.users);
-Schemas.users.belongsToMany(Schemas.books, { through: 'rentalLogs' });
-Schemas.books.belongsToMany(Schemas.users, { through: 'rentalLogs' });
+// Schemas.users.belongsToMany(Schemas.books, { through: 'rentalLogs' });
+// Schemas.books.belongsToMany(Schemas.users, { through: 'rentalLogs' });
+
+Schemas.books.hasMany(Schemas.rentalLogs);
+Schemas.rentalLogs.belongsTo(Schemas.books, { foreignKey: 'bookId' });
 
 (async () => {
   libraryDB.sync();

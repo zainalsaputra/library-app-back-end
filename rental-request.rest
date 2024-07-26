@@ -6,7 +6,7 @@ GET http://localhost:5000/books/rental
 
 ###
 
-POST  http://localhost:5000/books/rental/66a613bb-f9e3-4990-bb77-3d2529ed49d1
+POST  http://localhost:5000/books/rental/1034aa2e-5bf6-4967-8d98-322bdf5dd4a8
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-PUT  http://localhost:5000/books/rental/439139d5-14a1-4293-bf71-07a891effd77
+PUT  http://localhost:5000/books/rental/1034aa2e-5bf6-4967-8d98-322bdf5dd4a8
 Content-Type: application/json
 
 {
