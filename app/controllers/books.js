@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
-const path = require('path');
+// const path = require('path');
 const {
   createBook, findAllBooks,
 } = require('../services/books');
@@ -16,7 +16,8 @@ class BooksController {
       // }
       // const normalizedPath = path.normalize(req.file.path);
       // console.log(normalizedPath);
-      const image = path.normalize(req.file.path);
+      // const image = path.normalize(req.file.path);
+      const image = req.file.filename;
       // const userId = await
       const response = await createBook(req.body, image);
       res.status(201)
