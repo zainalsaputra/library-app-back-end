@@ -35,7 +35,7 @@ class Schemas {
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: false,
       allowNull: false,
     },
     address: {
